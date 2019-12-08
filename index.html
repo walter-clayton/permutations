@@ -14,7 +14,10 @@
     <button type="button" onclick="loadDoc()">Change Content</button>
     </div>
     
-    <script>
+
+    
+</body>
+<script>
     function loadDoc() {
       var xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function() {
@@ -23,10 +26,8 @@
           this.responseText;
         }
       };
-      xhttp.open("GET", "ajax_info.txt", true);
+      xhttp.open("GET", "permutation.json", true);
       xhttp.send();
     }
     </script>
-    
-</body>
 </html>
