@@ -52,25 +52,24 @@
 var myArr = JSON.stringify(genAnagrams('LABA').sort());
 console.log(myArr);
 
-
 var myJSON = JSON.stringify({indexOfGivenPermutation : genAnagrams('LABA').sort().length -1 });
 console.log(myJSON);
 
-let xhr = new XMLHttpRequest();
 
-
-xhr.getAllResponseHeaders();
-
-xhr.send();
-
-// the response is {"message": "Hello, world!"}
-xhr.onload = function() {
-  let responseObj = xhr.myJSON;
-  alert(responseObj); // Hello, world!
-};
-
-    }
-
-
+var url  = "https://github.com/walter-clayton/permutations/json";
+var xhr  = new XMLHttpRequest()
+xhr.open('GET', url, true)
+xhr.onload = function () {
+	var indexvalue = JSON.parse(xhr.myJSON);
+	if (xhr.readyState == 4 && xhr.status == "200") {
+		console.table(indexvalue);
+	} else {
+		console.error(indexvalue);
+	}
+}
+xhr.send(null);
+    
+ }
+    
     </script>
 </html>
