@@ -52,12 +52,10 @@ console.log(myJSON);
 
 
 
- function loadDoc(myJSON) {
-    let xhr = new XMLHttpRequest();
+ function loadDoc() {
+let xhr = new XMLHttpRequest();
 
 xhr.open('GET', '/permutations');
-
-xhr.responseType = 'json';
 
 xhr.send(myJSON);
 
