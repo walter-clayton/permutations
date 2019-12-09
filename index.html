@@ -61,7 +61,7 @@ let xhr = new XMLHttpRequest();
 
 xhr.open('GET', '/permutations/json');
 
-xhr.send(myJSON);
+xhr.send();
 
 // the response is {"message": "Hello, world!"}
 xhr.onload = function() {
