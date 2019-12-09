@@ -21,7 +21,14 @@
 
 
 
-let genAnagrams = (word, anagram = '', anagrams = [] ) => {
+
+
+
+
+ function loadDoc() {
+
+
+    let genAnagrams = (word, anagram = '', anagrams = [] ) => {
     if (!word) {
         anagrams.push(anagram);
         return;
@@ -49,12 +56,8 @@ console.log(myArr);
 var myJSON = JSON.stringify({indexOfGivenPermutation : genAnagrams('LABA').sort().length -1 });
 console.log(myJSON);
 
-
-
-
- function loadDoc() {
 let xhr = new XMLHttpRequest();
-var myJSON = JSON.stringify({indexOfGivenPermutation : genAnagrams('LABA').sort().length -1 });
+
 
 xhr.open('GET', '/permutations/json');
 
