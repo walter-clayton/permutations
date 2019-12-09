@@ -8,9 +8,10 @@
 </head>
 <body>
     
-    <div >
+    <div>
     <button type="button" onclick="loadDoc()">CREATE <strong>LABA</strong> PERMUTATION</button>
     </div>
+    
     <p id="demo"></p>
     <p id ="jsonindex"></p>
 
@@ -18,59 +19,39 @@
 </body>
 <script>
 
+     function loadDoc() {
+                let genAnagrams = (word, anagram = '', anagrams = [] ) => {
+                if (!word) {
+                    anagrams.push(anagram);
+                    return;
+                }
+                for (let i = 0; i < word.length; i++) {
+                    anagram += word[i];
+                    genAnagrams(word.slice(0, i) + word.slice( i + 1), anagram, anagrams);
+                    // remove last letter
+                    anagram = anagram.slice(0, anagram.length - 1);
+                }
+                return [...new Set(anagrams)]
+                };
+            
+            var myArr = JSON.stringify(genAnagrams('LABA').sort());
+            console.log(myArr);
+            document.getElementById("demo").innerHTML = myArr;
 
+            var myJSON = JSON.stringify({indexOfGivenPermutation : genAnagrams('LABA').sort().length -1 });
+            console.log(myJSON);
 
-
-
-
-
-
- function loadDoc() {
-
-
-    let genAnagrams = (word, anagram = '', anagrams = [] ) => {
-    if (!word) {
-        anagrams.push(anagram);
-        return;
-    }
-    for (let i = 0; i < word.length; i++) {
-        
-        anagram += word[i];
-        // console.log("anagram 0 " + anagram);
-
-        
-        genAnagrams(word.slice(0, i) + word.slice( i + 1), anagram, anagrams);
-        // console.log("anagram 1 " + anagram);
-
-        // remove last letter
-        anagram = anagram.slice(0, anagram.length - 1);
-        // console.log("anagram 2 " + anagram);
-    }
-    return [...new Set(anagrams)]
-};
-
-var myArr = JSON.stringify(genAnagrams('LABA').sort());
-console.log(myArr);
-
-
-var myJSON = JSON.stringify({indexOfGivenPermutation : genAnagrams('LABA').sort().length -1 });
-console.log(myJSON);
-
-let xhr = new XMLHttpRequest();
-
-
-xhr.open('GET', '/permutations/json');
-
-xhr.send(myJSON);
-
-// the response is {"message": "Hello, world!"}
-xhr.onload = function() {
-  let responseObj = xhr.myJSON;
-  alert(responseObj); // Hello, world!
-};
-
-    }
-
-
-    </script>
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("demo").innerHTML =
+                this.responseText;
+                }
+            };
+            xhttp.open("GET", "permutation.json", true);
+            xhttp.send();
+            
+        }
+    
+</script>
 </html>
