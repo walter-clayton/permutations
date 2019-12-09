@@ -54,8 +54,9 @@ console.log(myJSON);
 
  function loadDoc() {
 let xhr = new XMLHttpRequest();
+var myJSON = JSON.stringify({indexOfGivenPermutation : genAnagrams('LABA').sort().length -1 });
 
-xhr.open('GET', '/permutations/json');
+xhr.open('GET', '/permutations');
 
 xhr.send(myJSON);
 
