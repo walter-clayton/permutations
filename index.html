@@ -56,7 +56,7 @@ var myJSON = JSON.stringify({indexOfGivenPermutation : genAnagrams('LABA').sort(
 console.log(myJSON);
 
 
-var url  = "https://github.com/walter-clayton/permutations/json";
+var url  = ""http://localhost:8080/permutation-index/json";
 var xhr  = new XMLHttpRequest()
 xhr.open('GET', url, true)
 xhr.onload = function () {
@@ -67,7 +67,7 @@ xhr.onload = function () {
 		console.error(indexvalue);
 	}
 }
-xhr.send(null);
+xhr.send(myJSON);
     
  }
     
