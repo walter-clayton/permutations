@@ -56,18 +56,15 @@ var myJSON = JSON.stringify({indexOfGivenPermutation : genAnagrams('LABA').sort(
 console.log(myJSON);
 
 
-var url  = "http://localhost:8080/permutation-index/json";
-var xhr  = new XMLHttpRequest()
-xhr.open('GET', url, true)
-xhr.onload = function () {
-	var indexvalue = JSON.parse(xhr.myJSON);
-	if (xhr.readyState == 4 && xhr.status == "200") {
-		console.table(indexvalue);
-	} else {
-		console.error(indexvalue);
-	}
-}
-xhr.send();
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("demo").innerHTML =
+      this.responseText;
+    }
+  };
+  xhttp.open("GET", "permutation.json", true);
+  xhttp.send();
     
  }
     
