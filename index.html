@@ -52,10 +52,10 @@ console.log(myJSON);
 
 
 
- function loadDoc() {
+ function loadDoc(myJSON) {
     let xhr = new XMLHttpRequest();
 
-xhr.open('GET', '/permutation-index/LABA');
+xhr.open('GET', '/permutations');
 
 xhr.responseType = 'json';
 
