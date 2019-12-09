@@ -55,7 +55,7 @@ console.log(myJSON);
  function loadDoc() {
     let xhr = new XMLHttpRequest();
 
-xhr.open('GET', '/article/xmlhttprequest/example/json');
+xhr.open('GET', 'https://walter-clayton.github.io/permutations/');
 
 xhr.responseType = 'json';
 
@@ -64,7 +64,7 @@ xhr.send();
 // the response is {"message": "Hello, world!"}
 xhr.onload = function() {
   let responseObj = xhr.myJSON;
-  alert(responseObj.message); // Hello, world!
+  alert(responseObj); // Hello, world!
 };
 
     }
