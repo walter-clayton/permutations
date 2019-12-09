@@ -53,14 +53,17 @@ console.log(myJSON);
 
  function loadDoc() {
     var xmlhttp = new XMLHttpRequest();
+    xmlhttp.setRequestHeader("Content-Type", "/json"); 
     xmlhttp.onreadystatechange = function() {
   if (this.readyState == 4 && this.status == 200) {
-    var myArr = JSON.parse(genAnagrams('ODIDULA').sort());
-    document.getElementById("jsonindex").innerHTML = myJSON;
-    document.getElementById("demo").innerHTML = myArr;
+    var myArrresponse = JSON.parse(myArr);
+    var myJSONresponse = JSON.parse(myJSON);
+    document.getElementById("jsonindex").innerHTML = myJSONresponse;
+    document.getElementById("demo").innerHTML = myArrresponse;
   }
 };
-xmlhttp.send();
+xhttp.open("GET", url, true);
+xmlhttp.send(myArrr, myJSON);
     }
 
 
