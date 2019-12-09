@@ -8,9 +8,10 @@
 </head>
 <body>
     
-    <div id="demo">
-    <button type="button" onclick="loadDoc()">CREATE <strong>ADLUDIO</strong> PERMUTATION</button>
+    <div >
+    <button type="button" onclick="loadDoc()">CREATE <strong>LABA</strong> PERMUTATION</button>
     </div>
+    <p id="demo"></p>
     <p id ="jsonindex"></p>
 
 
@@ -41,29 +42,31 @@ let genAnagrams = (word, anagram = '', anagrams = [] ) => {
     return [...new Set(anagrams)]
 };
 
-var myArr = genAnagrams('ODI').sort();
+var myArr = JSON.stringify(genAnagrams('LABA').sort());
 console.log(myArr);
 
 
-var myJSON = JSON.stringify({indexOfGivenPermutation : genAnagrams('ODI').sort().length -1 });
+var myJSON = JSON.stringify({indexOfGivenPermutation : genAnagrams('LABA').sort().length -1 });
 console.log(myJSON);
 
 
 
 
  function loadDoc() {
-    var xmlhttp = new XMLHttpRequest();
-    xmlhttp.setRequestHeader("Content-Type", "/json"); 
-    xmlhttp.onreadystatechange = function() {
-  if (this.readyState == 4 && this.status == 200) {
-    var myArrresponse = JSON.parse(myArr);
-    var myJSONresponse = JSON.parse(myJSON);
-    document.getElementById("jsonindex").innerHTML = myJSONresponse;
-    document.getElementById("demo").innerHTML = myArrresponse;
-  }
+    let xhr = new XMLHttpRequest();
+
+xhr.open('GET', '/article/xmlhttprequest/example/json');
+
+xhr.responseType = 'json';
+
+xhr.send();
+
+// the response is {"message": "Hello, world!"}
+xhr.onload = function() {
+  let responseObj = xhr.myJSON;
+  alert(responseObj.message); // Hello, world!
 };
-xhttp.open("GET", url, true);
-xmlhttp.send(myArrr, myJSON);
+
     }
 
 
